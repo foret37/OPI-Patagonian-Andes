@@ -4,9 +4,13 @@ authors:
 - family-names: "Brandon"
   given-names: "Mark Thomas"
   orcid: "https://orcid.org/0000-0002-9703-2038"
+- family-names: "Chang"
+  given-names: "Queenie"
+- family-names: "Hren"
+  given-names: "Michael Thomas"
+  orcid: "https://orcid.org/0000-0002-2866-88
 title: "Analysis of orographic precipitation and isotopes in the vicinity of the Patagonian Andes (latitude 54.8 to 40.1 S)"
+version: OPI-Patagonia_v1.001
 doi: 10.5281/zenodo.7082537
 date-released: 2022-09-15
 url: "https://github.com/foret37/OPI-Patagonian-Andes/tree/OPI-Patagonia_v1.001"
-version: OPI-Patagonia_v1.001
-date-released: 2022-09-15
