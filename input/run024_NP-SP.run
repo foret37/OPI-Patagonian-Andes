@@ -1,0 +1,122 @@
+% RUN FILE FOR OPI PROGRAMS
+%... Run title:
+run 024, north & south Patagonia, opi 3.6 with lee-side evaporation, free kappa, and new samples
+%
+% August 8, 2021: Leeside calculation had an error, now fixed, where fP was left everywhere equal to 1,
+% rather than being set to the candidate value, fP0, prescribed for each step of the search. This 
+% error has likely been in effect since OPI 3.5, March 23, 2021.
+% March 18, 2021: This run uses changes from v. 3.5 with corrections for evaporation and hRho 
+% in the source function, for temperature calculation, and for time delays. Also introduced fitting for 
+% the mountain-height index, rather than the buoyancy frequency, and reduced 
+% zero-padding to wind direction only (2*nS).
+% June 30, 3021: Converted to d2H basis, and isotope data now including Mayr et al., 2018.
+% Also converted to new run format for opi 3.6. 
+
+%... Set parallel mode versus single mode for opiFit
+% 0: single mode
+% 1: parallel mode
+0
+
+%... Enter two path names for data files, each on a separate line, 
+% to account for runs on two different computers (e.g., local computer, cluster computer).
+% Set one path name to "no" if only one path is needed.
+~/project/OPI/data Patagonia
+~/Dropbox/OPI Patagonia/data Patagonia
+
+%... File for topographic data. The file should be placed in the directory 
+% set above for the dataPath variable.
+Patagonia topography_Gebco1km.mat
+
+%... Size of cosine window, as fraction of grid size (0=< rTukey <=1)
+% For example, rTukey = 0.25 (recommended value) will create a cosine
+% taper along each margin of the grid, with the taper width equal to 
+% rTukey/2 (0.125) times the dimension of the grid in each direction.
+% For no window, set rTukey = 0.
+% Recommended value: 0.25
+0.25
+
+%... File for water-isotope data. The file should be placed in the directory 
+% set above for the dataPath variable.
+Patagonia Andes North and South Isotopes 29 Jun 2021.xlsx
+
+%... File for continental-divide file, which is used in opiPlots and opiMaps.
+% The file should be placed in the directory set above for the dataPath variable.
+% Note that this file is required for the two-wind versions of the opi programs,
+% and must extend beyond the limits of the topographic grid.
+% Set to "no" if the file is not available or if a plot of the divide is not wanted.
+% Patagonia_contDivideLonLat.mat
+Patagonia_RidgeLineLonLat.mat
+
+%... Set limits for figures showing maps [minLon, maxLon, minLat, maxLat]
+% Use 0,0,0,0 to show full domain. 
+% 0, 0, 0, 0
+-77, -68, -54, -39
+
+%... Set path origin, lonPath0, latPath0, which defines the origin of cross sections. 
+% Set to "map" to tell the program to set this point to the map origin.
+map
+
+%... Set search parameters used by the fminCRS function. 
+%%% OLD 
+% The 3 parameters mu0, mu, epsilon0 that control the CRS3 search.
+% mu0 and mu are factors that define the sizes of the initial search, 
+% mSet0 = ceil(mu0*nFree), and the main search, mSet = ceil(mu*nFree),
+% where nFree is the number of free parameters. epsilon0 defines the stopping 
+% criterion, (objMax - objMin) < epsilon0, where objMax and objMin are the
+% maximum and minimum values of the objective function for the current 
+% solution set. See fminCRS3 function for more details.
+% Recommended values: mu0=25, mu=25, epsilon0=1e-4 to 1e-6.
+% 25, 25, 1e-4
+%%% 
+
+% The current versions of opiFit and opiPairsPlots uses 2 parameters mu, and epsilon0.
+% mu is used to set the size of search set, mSet = ceil(mu*(nFree + 1)).
+% epsilon0 defines the stopping criterion, which is defined as 
+% epsilon0 > stdev(f(1:mSet)) < epsilon0, with f(1:mSet) as the mSet 
+% of candidate solutions with the smallest f values, and stdev is 
+% the standard deviation function. 
+% The settings introduce here ensure that mSet = 225, which was the size
+% of the search sets use for this run. The stopping criterion is different
+% now (as described above), but this change would only affect opiFig_OneWind 
+% if the fit were run again. opiPairsPlots uses the actual mSet value, and
+% the original run used equal values for mSet0 and mSet. 
+22.5, 1e-4
+
+%... File containing solutions for initializing or starting best-fit search
+% The file should be placed in the directory set above for the dataPath variable.
+% Set to "no" if initial solutions are not to be used. 
+no
+
+% ... Parameters 
+% U (m/s), azimuth (deg), T0 (K), M (dimensionless), kappa (m^2/s), tauC (s), ...
+% d2H0 (permil), dd2H0dLat (permil/deg lat), fP (fraction)
+% Recommended that M is limited to the range 0 to 1.2
+
+%... Parameter labels, which are used to designate axis labels for
+% in the opiPairsPlot program. Note the label must be separated by
+% the character: "|" . 
+U (m/s)|azimuth|T_0 (K)|M|\kappa (m^2/s)|\tau_c (s)|\delta^{2}_0 (‰)|d\delta^{2}_0/d\phi (‰/°)|f_P
+
+%... Exponents for "power of 10" scaling factors for each
+% parameter, which are used for the opiPairsPlot program. 
+% For example, an exponent set to 3 means that the parameter value 
+% will be multiplied by 10^-3 before plotting.
+0, 0, 0, 0, 0, 0, -3, -3, 0
+
+%... Constraints for parameter search
+% Azimuth constraints can use negative values in order to span across north 
+% (e.g., use: -30 and +30 to span the azimuth range 330 to 30 degrees).
+0.1, 35, 265, 0,       0,    0, -110.8e-3, -16.7e-3, 0
+25, 145, 295, 1.2, 1e+06, 2500,  -10.4e-3,  16.7e-3, 1.0
+
+
+%... Best-Fit Solution
+% Start time for current run: 18-Aug-2021 21:25:00
+% Finish time for current run: 19-Aug-2021 02:44:45
+% Time for current run: 5.33 hours
+% Reduced chi-square: 2.0301
+% Degrees of freedom: 290
+% Number of primary samples in wet locations: 299
+% Number of primary samples: 305
+% Best-fit parameters:
+11.7898	109.223	281.488	0.187347	0.199132	140.178	-0.0435525	-0.000858647	0.821217
