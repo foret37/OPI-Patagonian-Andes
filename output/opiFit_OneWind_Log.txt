@@ -1,0 +1,115 @@
+Program: opiFit_OneWind
+Start time: 18-Aug-2021 21:25:00
+Run file path:
+/Users/markbrandon/Dropbox (Yale University)/OPI Patagonia/Runs_NP-SP/run024_NP-SP Leeside evap, nEvap = 1, more samples BEST SOLUTION
+Run filename:
+run024_NP-SP TEST.run
+Run title:
+run 024, north & south Patagonia, opi 3.6 with lee-side evaporation, free kappa, and new samples
+Path name for data directory:
+~/Dropbox/OPI Patagonia/data Patagonia
+
+------------------ Topography File ------------------
+Topography file: Patagonia topography_Gebco1km.mat
+Maximum elevation: 3457 m
+Grid size, nx and ny: 1365, 2114
+Minimum and maximum for longitude: -80, -62.5 degrees
+Minimum and maximum for latitude: -55, -36 degrees
+Grid spacing, dx and dy: 0.0128299, 0.00899195 degrees
+Grid spacing, dx and dy: 0.98, 1.00 km
+Lon, lat for map origin: -72.661, -46.765 degrees
+Map origin is set to sample centroid.
+Size of cosine window as fraction of grid size: 0.250000 (dimensionless)
+Coriolis frequency at map-origin latitude: -0.106253 mrad/s
+Lon, lat for section origin: -72.661, -46.765 degrees
+
+-------------------- Sample File --------------------
+Sample file: Patagonia Andes North and South Isotopes 29 Jun 2021.xlsx
+Number of all samples: 449
+Number of altered samples: 144
+Number of primary samples: 305
+Number of local primary samples: 1
+Number of catchment primary samples: 304
+Minimum and maximum for longitude: -75.432, -68.375 degrees
+Minimum and maximum for latitude: -54.797, -40.0876 degrees
+
+---------------------- Constants --------------------
+Average distance for isotopic exchange: 540 m
+Standard-deviation ratio for data residuals: 28.30 (dimensionless)
+
+--------- Constraints for Best-Fit Solution ---------
+Wind speed: 0.1, 25 m/s
+Wind azimuth: 35, 145 degrees
+Sea-level temperature: 265, 295 K
+Mountain-height number: 0, 1.2 (dimensionless)
+Horizontal eddy diffusivity: 0, 1e+06 m^2/s
+Average condensation time: 0, 2500 s
+d2H for base precipitation: -110.8, -10.4 per mil
+d2H latitude gradient for base precipitation: -16.7, 16.7 per mil/deg lat
+Residual precipitation after evaporation: 0, 1 (dimensionless)
+
+----------------- Evaporation Option ----------------
+Leeside evaporative recycling for precipitation state.
+
+------------- Solutions From Restart File -----------
+Restart file: none
+
+------------- Solutions From Restart File -----------
+Restart file: none
+
+------------------ Best-Fit Search ------------------
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 27).
+Modified controlled random search, fminCRS3
+Number of parameters = 9
+Number of free parameters = 9
+Factor for size of initial search set, mu0 = 25
+Factor for size of main search set, mu = 25
+Size of initial search set = 225
+Size of main search set = 225
+Absolute precision for stopping criterion, epsilon = 0.0001
+Workers for parallel calculation = 27
+
+Parallel pool using the 'local' profile is shutting down.
+
+---------- Estimates for Best-Fit Solution ----------
+Wind speed: 11.8 m/s
+Azimuth: 109.2 degrees
+Sea-level temperature: 281.5 K (8.3 °C)
+Mountain-height number: 0.187 (dimensionless)
+Horizontal eddy diffusivity: 0 m^2/s
+Average residence time for cloud water: 140 s
+d2H for base precipitation: -43.6 per mil
+d2H latitude gradient for base precipitation: -0.859 per mil/deg lat
+Residual precipitation after evaporation: 0.82 (dimensionless)
+
+---- Other Variables Related to Best-Fit Solution ---
+Saturated Buoyancy frequency: 0.639 mrad/s
+d18O for base precipitation: -6.8 per mil
+d18O latitude gradient for base precipitation: -0.104 per mil/deg lat
+Average residence time for falling precipitation: 1116 s
+Water-vapor density at sea level: 8.55 g/m^3
+Scale height for water vapor: 2329 m
+Average velocity for falling precipitation: 2.1 m/s
+Total density at sea level: 1.26 g/m^3
+Scale height for total density: 9499 m
+Average lapse-rate ratio, gammaSat/gammaEnv: 0.95 (dimensionless)
+
+------------ Observed Meteoric Water Line -----------
+Principal standard deviations: 0.36, 24.54 per mil
+Intercept and slope: 12.5 per mil, 8.23
+
+----------- Predicted Meteoric Water Line -----------
+Principal standard deviations: 0.09, 20.95 per mil
+Intercept and slope: 14.4 per mil, 8.39
+
+------------------ Quality of Fit -------------------
+Reduced chi-square: 2.0291
+Degrees of freedom: 290
+Number of primary samples in wet locations: 299
+Number of primary samples: 305
+Best-fit parameters:
+11.7898	109.223	281.488	0.187347	0.199132	140.178	-0.0435525	-0.000858647	0.821217
+
+Finish time: 19-Aug-2021 02:44:45
+Time for current run: 5.33 hours
